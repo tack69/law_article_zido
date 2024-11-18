@@ -1,0 +1,157 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="zidou/html; charset=UTF-8">
+        <title>法学の参考文献自動作成</title>
+        <link rel="stylesheet" href="sample.css">
+        <script src = "script/zidou.js"></script>
+    </head>
+    <body>
+    <h1>法学の参考文献自動作成</h1>
+    <p></p>
+    <label for="sankoh">参考文献タイプを選択:</label
+    <label><input type="radio" name="sankoh" id="option1" value="book" onclick="showForm()">書籍</label>
+    <label><input type="radio" name="sankoh" id="option2" value="ronbun" onclick="showForm()">雑誌論文</label>
+    <label><input type="radio" name="sankoh" id="option3" value="hanrei" onclick="showForm()">判例分析</label>
+    <label><input type="radio" name="sankoh" id="option6" value="zadan" onclick="showForm()">座談会</label>
+    <label><input type="radio" name="sankoh" id="option4" value="internet" onclick="showForm()">インターネット</label>
+    <label><input type="radio" name="sankoh" id="option5" value="hanrei0" onclick="showForm()">判例</label>
+    <label><input type="radio" name="sankoh" id="option7" value="others" onclick="showForm()">その他</label>
+    <div class="all_container">
+        <div class="container">
+        <div id="book" style="display:none">
+            <label><input type="checkbox"name="roubun-book" id="on" value="ron=book">論文集</label>
+            <label for="ron-name" id="ronbun-name" value="ronbunis">・論文名</label>
+            <input type="text" id="ron-name" style="display: none;">
+            <label>・タイトル</label>
+            <input type="text" id="booktitle" placeholder="例）法律入門">
+            <label >・版数</label>
+            <input type="number" id="han">
+            <label><input type="radio" name="book2" id="op3" value="hensha-isnot" onclick="displayForm1()">監修者・編者なし</label>
+            <label><input type="radio" name="book2" id="op4" value="hensha-is1" onclick="displayForm1()">監修者・編者あり</label>
+            <label for="hansha-name1" id="hensha-is1" style="display: none;">・監修者または編者名</label>
+            <input type="text" id="hensha-name1" style="display: none;">
+            <label>・著者</label>
+            <input type="text" id="Allname" placeholder="例）山田太郎">
+            <label>・出版社：</label>
+            <input type="text" id="publisher">
+            <label>・出版年：</label>
+            <input type="number" id="publicationYear" value="2020">
+        </div>
+        <div id="ronbun" style="display:none">
+            <label>・論文名</label>
+            <input type="text" id="article">
+            <label>・著者</label>
+            <input type="text" id="Allname2">
+            <label>・雑誌、新聞記事名：</label>
+            <input type="text" id="news">
+            <label>・巻号数</label>
+            <label>巻</label>
+            <input type="number" id="kan">
+            <label>号</label>
+            <input type="number" id="go">
+            <label>・発行所名：</label>
+            <input type="text" id="publisher2">
+            <label>・頁</label>
+            <input type="number" id="f_page2">~
+            <input type="number" id="l_page2">
+            <label>・出版年：</label>
+            <input type="number" id="publicationYear2" value="2020">
+        </div>
+        <div id="hanrei" style="display:none;">
+            <label><input type="radio" name="hanrei2" id="op1" value="hensha-isn" onclick="displayForm()">監修者・編者なし</label>
+            <label><input type="radio" name="hanrei2" id="op2" value="hensha-is" onclick="displayForm()">監修者・編者あり</label>
+            <label for="hensha-name" id="hensha-is" style="display: none;">・監修者又は編者名</label>
+            <input type="text" id="hensha-name" style="display: none;">
+            <label>・雑誌名、書名：</label>
+            <input type="text" id="article2">
+            <select name="hanr" id="hanr">
+                <option value="判解">判解</option>
+                <option value="判批">判批</option>
+                <option value="判研">判研</option>
+            </select>
+            <label>・著者</label>
+            <input type="text" id="Allname3">
+            <label>・巻号数</label>
+            <label>巻</label>
+            <input type="number" id="kan2">
+            <label>号</label>
+            <input type="number" id="go2">
+            <label>・発行所名：</label>
+            <input type="text" id="publisher3">
+            <label>・頁</label>
+            <input type="number" id="f_page3">~
+            <input type="number" id="l_page3">
+            <label>・出版年：</label>
+            <input type="number" id="publicationYear0" value="2020">
+        </div>
+        <div id="zadan" style="display:none;">
+            <label >・テーマ</label>
+            <input type="text" id="content">
+            <label>・雑誌名</label>
+            <input type="text" id="article0">
+            <label>・著者</label>
+            <input type="text" id="Allname0">
+            <label>・巻号数</label>
+            <label>巻</label>
+            <input type="number" id="kan0">
+            <label>号</label>
+            <input type="number" id="go0">
+            <label>・頁</label>
+            <input type="number" id="f_page0">~
+            <input type="number" id="l_page0">
+            <label>・発行年：</label>
+            <input type="number" id="publicationYear2" value="2020">
+            <label>・発言者</label>
+            <input type="text" id="name_said">
+        </div>
+        <div id="internet" style="display:none;">
+            <label>・文書名</label>
+            <input type="text" id="website">
+            <label>URL</label>
+            <input type="text" id="url" placeholder="http://example.jp">
+            <label>・著者・発行者名</label>
+            <input type="text" id="publisher4">
+            <label>・最終閲覧日</label>
+            <input type="date" id="data">
+        </div>
+        <div id="hanrei0" style="display:none;">
+            <label>・法廷名</label>
+            <input type="text" id="hotei" placeholder="最大判、最三小判、東京高判等">
+            <label>・裁判年</label>
+            <label>元号</label>
+            <input type="text" id="gengo">
+            <label>年</label>
+            <input type="number" id="nen" value="1">
+            <label>・裁判月・日</label>
+            <label>月</label>
+            <input type="number" id="tuki" value="1" min="1" max="12">
+            <label>日</label>
+            <input type="number" id="hi" value="1" min="1" max="31">
+            <label>・判例集</label>
+            <select id="hanshu" onclick="HanshuForm()">
+                <option value="民集">民集</option>
+                <option value="刑集">刑集</option>
+                <option value="other">その他</option>
+            </select>
+            <div id = "other" style="display: none;">
+                <input type="text" id="other_input">
+            </div>
+            <label>巻</label>
+            <input type="number" id="kan6">
+            <label>号</label>
+            <input type="number" id="go6">
+            <label>頁</label>
+            <input type="number" id="page6">
+        </div>
+        <textarea id="others" cols="30" rows="2" style="display: none;" placeholder="この枠に書き込む"></textarea>
+        <input type="button" id="pushbutton1" value="作成する" onclick="funcType()"></button>
+        <button id="removeButton" onclick="deleteSelected()">保存物を削除する</button>
+        </div>
+        <div class="reference-list">
+            <label for="saveBookInfo">[参考文献]</label>
+            <ul id="saveBookInfo"></ul>
+            <ul id="select"></ul>
+        </div>
+    </div>
+    </body>
+</html>
